@@ -1,23 +1,29 @@
 class RPG:
-    def __init__(self, heroes: [], boss: [], mobs: []):
-        self.heroes = heroes
-        self.boss = boss
-        self.mobs = mobs
-
-    def companions(self):
-        choice_heroes = input("Выберите команду из 4 человек (список героев сверху).\n"
-                              "Пример выбора героев: 1,3,4,9: ")
-        indices = [int(index) for index in choice_heroes.split(',') if index.strip().isdigit()]
-        if len(indices) == 4:
-            selected_heroes = [self.heroes[index - 1] for index in indices if 0 < index <= len(self.heroes)]
-            return selected_heroes
-        else:
-            return ('\n\n------------------------------------------------------------------------------------\n'
-                    'Пожалуйста, выберите 4 героя.\n'
-                    '[пусто]\n'
-                    '------------------------------------------------------------------------------------\n\n')
+    def __init__(self, name, class_of_character, damage_type, race_of_character):
+        self.name = name
+        self.class_of_character = class_of_character
+        self.damage_type = damage_type
+        self.race_of_character = race_of_character
 
 
-rpg_game = RPG(['Герой1', 'Герой2', 'Герой3', 'Герой4', 'Герой5'], [], [])
-selected_companions = rpg_game.companions()
-print("Выбранные спутники:", selected_companions)
+class Characters(RPG):
+    def __init__(self, health_point, mana_point, def_point, damage_point, bonus_damage,):
+        self.health_point = health_point
+        self.mana_point = mana_point
+        self.def_point = def_point
+        self.damage_point = damage_point
+        self.bonus_damage = bonus_damage
+        super().__init__(self.name, self.class_of_character, self.damage_type, self.race_of_character)
+
+    def create_character(self):
+        return {'Имя': self.name, 'Раса': self.race_of_character, 'Класс': self.class_of_character,
+                'Здоровье': self.health_point, 'Мана': self.mana_point, 'Защита': self.def_point,
+                'Тип_урона': self.damage_type, 'Урон': self.damage_point,}
+
+
+
+
+class Locations:
+    def __init__(self, environment, complexity, ):
+        self.environment = environment
+
