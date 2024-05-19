@@ -1,0 +1,4 @@
+
+all_races = {
+    'Human': {}
+}
