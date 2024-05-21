@@ -1,7 +1,9 @@
 .idea/
 .venv
 db/
-characters/__init__.py
-db/__init__.py
+__pycache__/
+
+
+
 
 

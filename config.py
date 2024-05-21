@@ -1,53 +1,48 @@
-from characters.config_characters import all_races
+from effects.races.races_in_game import (
+    all_races,
+
+)
+from characters.heroes import all_heroes
+
 
 class RPG:
-    def __init__(self, name, class_of_character, damage_type, race_of_character):
+    def __init__(self, name, class_of_character, race_of_character):
         self.name = name
         self.class_of_character = class_of_character
-        self.damage_type = damage_type
         self.race_of_character = race_of_character
 
 
-class Characters(RPG):
-    def __init__(self, name, class_of_character, damage_type, race_of_character,
-                 health_point, mana_point, def_point, damage_point):
-        super().__init__(name, class_of_character, damage_type, race_of_character)
+class CreateCharacters(RPG):
+    def __init__(self, name, class_of_character, race_of_character,
+                 health_point: int, mana_point: int, def_point: int, damage_point: int):
+        super().__init__(name, class_of_character, race_of_character)
         self.health_point = health_point
         self.mana_point = mana_point
         self.def_point = def_point
         self.damage_point = damage_point
 
-    def create_character(self):
-        return {
+    def character_info(self):
+        info = {
             'Имя': self.name,
             'Раса': self.race_of_character,
             'Класс': self.class_of_character,
             'Здоровье': self.health_point,
             'Мана': self.mana_point,
             'Защита': self.def_point,
-            'Тип_урона': self.damage_type,
             'Урон': self.damage_point,
         }
+        return info
 
 
 class Races(RPG):
     def __init__(self,):
-        super().__init__(self.race_of_character, self.class_of_character, self.damage_type, self.name)
+        super().__init__(self.race_of_character, self.class_of_character, self.name)
 
-    def is_race_of_character(self,race_of_character):
-        for race in  all_races.keys():
-            if race == race_of_character:
+    def is_race_of_character(self,):
+        for race in all_races.keys():
+            if race == self.race_of_character:
                 return True
         return False
-
-    def Human_Race(self, race_of_character):
-        if self.is_race_of_character(race_of_character):
-
-
-
-    def character_race(self, race_of_character):
-        if race_of_character in
-
 
 
 class Locations:
@@ -59,7 +54,27 @@ class Locations:
         return f"Окружение: {self.environment}, Уровень сложности: {self.complexity}"
 
 
-characters = Characters("Gandalf", "Mage", "Magic", "Human", health_point=60, mana_point=40, def_point=40, damage_point=15)
-mage = characters.create_character()
-print(mage)
+class Settings:
+    def __init__(self, complexity_lvl, enemies_count, ):
+        self.complexity_lvl = complexity_lvl
+        self.enemies_count = enemies_count
+
+
+class PlayerTeam:
+    def __init__(self,):
+        pass
+
+    @staticmethod
+    def assembly_of_the_team(heroes):
+        if 1 < len(heroes) > 4 or heroes == []:
+            return 'Произошла ошибка: можно взять от 1 до 4 героев, не больше и не меньше.'
+        team = []
+        for hero in heroes:
+            if hero in all_heroes:
+                team.append(hero)
+            else:
+                return 'Произошла ошибка: проверьте, правильно ли вы выбрали героев\n' \
+                       'и существуют ли они в игре:)\n' \
+                       'Напоминаем, что можно взять от 1 до 4 героев, не больше и не меньше.'
+        return team
 
