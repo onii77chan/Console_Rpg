@@ -2,7 +2,7 @@ from effects.races.races_in_game import (
     all_races,
 
 )
-from characters.heroes import all_heroes
+
 
 
 class RPG:
@@ -65,16 +65,15 @@ class PlayerTeam:
         pass
 
     @staticmethod
-    def assembly_of_the_team(heroes):
-        if 1 < len(heroes) > 4 or heroes == []:
+    def assembly_of_the_team(team):
+        if 1 < len(team) > 4 or team == []:
             return 'Произошла ошибка: можно взять от 1 до 4 героев, не больше и не меньше.'
-        team = []
-        for hero in heroes:
-            if hero in all_heroes:
-                team.append(hero)
+        team_list = []
+        for hero in team:
+            if hero in team:
+                team_list.append(hero)
             else:
                 return 'Произошла ошибка: проверьте, правильно ли вы выбрали героев\n' \
                        'и существуют ли они в игре:)\n' \
-                       'Напоминаем, что можно взять от 1 до 4 героев, не больше и не меньше.'
-        return team
-
+                       'напоминаем, что можно взять от 1 до 4 героев, не больше и не меньше.'
+        return team_list

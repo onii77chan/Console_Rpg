@@ -5,5 +5,7 @@ welcome_text = ("Добро пожаловать странник! ниже на
                 "2) пока пусто..."
                 "")
 
-MainMenu = ['start(1)', 'settings(2)', 'help(3)', 'quit(q)']
-output_mainmenu = '\n\t\t\t'.join(MainMenu)
+mainmenu_txt = ['start(1)', 'settings(2)', 'help(3)', 'quit(q)',]
+main_menu_text = ', '.join(mainmenu_txt)
+separation_of_the_text = '________________________________________________________________________________'#90_simbols
+
