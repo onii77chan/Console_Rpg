@@ -31,3 +31,9 @@ def view_all_heroes(heroes_list):
               f"{'Защита':<5}: {hero['Защита']:<4} "
               f"{'Урон':<4}: {hero['Урон']:<4}")
 
+
+def view_hero_information(hero_name, team_list, all_hero_list):
+    for hero in all_hero_list:
+        if hero['Имя'] == hero_name and hero_name in team_list:
+            return hero
+    return None

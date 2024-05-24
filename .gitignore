@@ -1,6 +1,6 @@
 .idea/
 .venv
-db/
+
 __pycache__/
 
 

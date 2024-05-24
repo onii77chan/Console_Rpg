@@ -4,7 +4,6 @@ from effects.races.races_in_game import (
 )
 
 
-
 class RPG:
     def __init__(self, name, class_of_character, race_of_character):
         self.name = name
@@ -61,19 +60,30 @@ class Settings:
 
 
 class PlayerTeam:
-    def __init__(self,):
-        pass
+    def __init__(self, team):
+        self.team = team
+
+    def choice_teamates(self):
+        self.team = []
+        for i in range(4):
+            choice_hero = input("Выберите героя: ")
+            self.team.append(choice_hero)
+        return self.team
 
     @staticmethod
-    def assembly_of_the_team(team):
-        if 1 < len(team) > 4 or team == []:
+    def assembly_of_the_team(team, all_heroes):
+        if len(team) < 1 or len(team) > 4:
             return 'Произошла ошибка: можно взять от 1 до 4 героев, не больше и не меньше.'
+
         team_list = []
+        hero_names = [hero['Имя'] for hero in all_heroes]
+
         for hero in team:
-            if hero in team:
+            if hero in hero_names and hero not in team_list:
                 team_list.append(hero)
             else:
                 return 'Произошла ошибка: проверьте, правильно ли вы выбрали героев\n' \
                        'и существуют ли они в игре:)\n' \
                        'напоминаем, что можно взять от 1 до 4 героев, не больше и не меньше.'
+
         return team_list
