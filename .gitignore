@@ -1,6 +1,6 @@
 .idea/
 .venv
-
+tests(not_related_to_the_project).py
 __pycache__/
 
 

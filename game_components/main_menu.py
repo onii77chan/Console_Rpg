@@ -9,15 +9,19 @@
 def main_menu(user_input_data, start_game_method, settings_method, help_method):
     if user_input_data == '1':
         start_game_method()
+        return False
     elif user_input_data == '2':
         settings_method()
+        return False
     elif user_input_data == '3':
         help_method()
+        return False
     elif 'q' == user_input_data or user_input_data == 'quit' or user_input_data == 'exit':
         print('Bye bye!')
         exit()
     else:
         print('Возможно вы ввели чтото не так попробуйте еще раз')
+        return True
 
 
 def settings_menu():
